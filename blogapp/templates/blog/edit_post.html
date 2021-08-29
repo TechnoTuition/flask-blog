@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+  Edit Post
+{% endblock %}
+
+{% block body %}
+  <div class="container my-4">
+    <div class="mb-3">
+        <h4 class="text-center">Edit Your Post</h4>
+        <form action="/edit/{{ allpost.id }}" method="POST">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input name="title"type="text" class="form-control" id="exampleFormControlInput1" value="{{ allpost.title }}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+            <textarea name="content"class="form-control" id="exampleFormControlTextarea1" rows="3" >{{ allpost.content }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update </button>
+</form>
+{% endblock %}

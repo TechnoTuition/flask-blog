@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Welcome {{ username }}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="my-4">
+      <a class="btn btn-primary" href="/post">Write Post</a>
+    </div>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Content</th>
+                <th scope="col">Date</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+           {% for allpost in name.post %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ allpost.title | truncate(20) }}</td>
+                <td>{{ allpost.content | truncate(10) }}</td>
+                <td>{{ allpost.post_created }}</td>
+                <td><a href="/edit/{{ allpost.id }}"class="btn btn-success">Edit</a></td>
+                <td><a class="btn btn-danger" href="/delete/{{ allpost.id }}">Delete</a></td>
+            </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
